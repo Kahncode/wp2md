@@ -6,9 +6,13 @@ Customize it to your needs in order to process custom HTML from your specific wo
 
 DISCLAIMER: I am terrible at python programming.
 
-## Dependencies
+## Python version and Dependencies
+- Developed and tested with python 3.7
+- pip packages:
+  - pypandoc
 - [Pandoc](https://pandoc.org/) must be installed and available in the path
 
 ## Usage
 
-- ???
+- python wp2md.py <file.html>
+- will write out <file.md>
