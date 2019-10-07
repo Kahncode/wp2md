@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.705
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "wp2md", "wp2md.pyproj", "{F03F8E6D-A7B7-4C30-A3C5-436FF26FFCDD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F03F8E6D-A7B7-4C30-A3C5-436FF26FFCDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F03F8E6D-A7B7-4C30-A3C5-436FF26FFCDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FE242CB3-D949-4AA7-84E7-7EA5EF410EED}
+	EndGlobalSection
+EndGlobal

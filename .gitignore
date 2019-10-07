@@ -124,6 +124,10 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+#Visual Studio
+.vs
 
+#Specific files for wp2md
 *.html
 *.md
+pandoc*
