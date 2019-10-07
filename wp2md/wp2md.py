@@ -49,6 +49,9 @@ def process_md(md_str):
 	
 	#null language defaults to cpp
 	md_str = md_str.replace('``` null', '``` cpp')
+
+	#remove the more tag
+	md_str = re.sub(r'^\[\]\{#more\-[0-9]+\}\n', '', md_str, 0, re.MULTILINE)
 	
 	#remove remaining artifacts
 	md_str = re.sub(r'\{.*\}', '', md_str)
@@ -83,11 +86,11 @@ if __name__ == '__main__':
 		#Test line: pandoc -f html -t markdown article.html --wrap=preserve > article.md
 		md_str = pypandoc.convert_text(article_str, 'markdown', format='html', extra_args=['--wrap=preserve'])
 
+		#avoid the double line break bugs with \r\n
+		md_str = md_str.replace('\r\n', '\n')
 		#Post-process
 		md_str = process_md(md_str)
 
-		#prevent the double line break bug with \r\n
-		md_str = md_str.replace('\r\n', '\n')
 		
 		print(md_str)
 
