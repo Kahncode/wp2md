@@ -60,6 +60,9 @@ def process_md(md_str):
 	#remove specific bug for kahncode
 	md_str = re.sub(r'\[\[\[(!\[\])', r'\1', md_str)
 
+	#No more than one line break between paragraphs
+	md_str = re.sub(r'^\s*\n\s*\n', '\n', md_str, 0, re.MULTILINE)
+
 	return md_str
 
 #main
