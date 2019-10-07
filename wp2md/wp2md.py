@@ -56,6 +56,10 @@ def process_md(md_str):
 	#remove remaining artifacts
 	md_str = re.sub(r'\{.*\}', '', md_str)
 	md_str = re.sub(r':::.*', '', md_str)
+
+	#remove specific bug for kahncode
+	md_str = re.sub(r'\[\[\[(!\[\])', r'\1', md_str)
+
 	return md_str
 
 #main
