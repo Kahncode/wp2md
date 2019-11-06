@@ -42,6 +42,10 @@ def isolate_article(html_str):
 	return article_str[0:end_index]
 	
 
+def process_html(html_str):
+	html_str = re.sub(r'<noscript>.*</noscript>', '', html_str, 0, re.MULTILINE)
+	return html_str
+
 def process_md(md_str):
 
 	# process code blocks and add correct syntax highlight
@@ -62,6 +66,13 @@ def process_md(md_str):
 
 	#No more than one line break between paragraphs
 	md_str = re.sub(r'^\s*\n\s*\n', '\n', md_str, 0, re.MULTILINE)
+
+	#Specific fix for an error that happened before where the end of italics section was put on the next line as such:
+	'''
+	*Some italics text.\
+	*
+	'''
+	md_str = re.sub(r'\*(.*)\\\n\*', r'*\1*', md_str, 0, re.MULTILINE)
 
 	return md_str
 
@@ -89,6 +100,7 @@ if __name__ == '__main__':
 
 		#isolate relevant html block
 		article_str = isolate_article(html_str)
+		article_str = process_html(article_str)
 
 		#Test line: pandoc -f html -t markdown article.html --wrap=preserve > article.md
 		md_str = pypandoc.convert_text(article_str, 'markdown', format='html', extra_args=['--wrap=preserve'])
