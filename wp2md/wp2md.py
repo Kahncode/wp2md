@@ -49,7 +49,7 @@ def process_html(html_str):
 def process_md(md_str):
 
 	# process code blocks and add correct syntax highlight
-	md_str = re.sub(r'``` {.EnlighterJSRAW enlighter-language="(.+)"}', r'``` \1', md_str);
+	md_str = re.sub(r'``` {.EnlighterJSRAW enlighter-language="(.+)"}', r'``` \1', md_str)
 	
 	#null language defaults to cpp
 	md_str = md_str.replace('``` null', '``` cpp')
@@ -66,6 +66,9 @@ def process_md(md_str):
 
 	#No more than one line break between paragraphs
 	md_str = re.sub(r'^\s*\n\s*\n', '\n', md_str, 0, re.MULTILINE)
+
+	#Fix errors with extra backslash on $
+	md_str = re.sub(r'\\\$(\d+)', r'$\1', md_str, 0, re.MULTILINE)
 
 	#Specific fix for an error that happened before where the end of italics section was put on the next line as such:
 	'''
