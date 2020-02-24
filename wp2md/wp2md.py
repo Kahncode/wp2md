@@ -79,6 +79,21 @@ def process_md(md_str):
 
 	return md_str
 
+def check_md_for_errors(md_str):
+
+	##TODO: print line numbers
+
+	#Check if there are any more \$ problems
+	match = re.findall(r'.{0,30}\\\$.{0,30}', md_str)
+	if(match):
+		print("ERROR - \"\$\" found: ", match)
+
+	#Check if there are any more \$ problems
+	match = re.findall(r'\*\s*\*', md_str)
+	if(match):
+		print("ERROR - Wrong <em> block: ", match)
+
+
 #main
 if __name__ == '__main__':
 
@@ -113,8 +128,12 @@ if __name__ == '__main__':
 		#Post-process
 		md_str = process_md(md_str)
 
-		
-		print(md_str)
+		check_md_for_errors(md_str)
+
+		print("SUCCESS - Wrote output to ", md_file)
+
+		#debug print
+		#print(md_str)
 
 		with open(md_file, 'w') as w:
 			w.write(md_str)
